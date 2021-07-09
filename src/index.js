@@ -3,25 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore ,applyMiddleware, compose} from 'redux'
-import { Provider, useDispatch } from 'react-redux';
-import Rootreducer from './Rootreducer'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Provider} from 'react-redux';
+import {applyMiddleware, compose,createStore} from 'redux'
+import rootReducer from './rootReducer';
 import thunk from 'redux-thunk';
-
 const middleware = [thunk];
+const store=createStore(rootReducer,compose(
+  applyMiddleware(...middleware),
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+));
 
-const store = createStore(
-	Rootreducer,
-	compose(
-		applyMiddleware(...middleware),
-		window.__REDUX_DEVTOOLS_EXTENSION__ &&
-			window.__REDUX_DEVTOOLS_EXTENSION__()
-	)
-);
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+   <Provider store={store}>
     <App />
     </Provider>
    

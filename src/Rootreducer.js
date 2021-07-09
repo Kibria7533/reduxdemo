@@ -1,8 +1,9 @@
-import { combineReducers} from 'redux'
-import IDR from './IncrementDecrement'
-import NameReducer from './NameReducer';
- const Rootreducer=combineReducers({
-IDR,NameReducer
-})
+import incrementReducer from './incrementReducer'
+import {combineReducers} from 'redux'
+import storeReducer from './storeReducer'
 
-export default Rootreducer;
+const rootReducer=combineReducers({
+incrementReducer,storeReducer
+});
+
+export default rootReducer;
